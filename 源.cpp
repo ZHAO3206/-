@@ -5,7 +5,7 @@
 #include<iostream>
 using namespace std;
 #define SIZE 10
-//Ë³Ğò±í
+//é¡ºåºè¡¨
 #if 0
 typedef struct Sqlist
 {
@@ -13,7 +13,7 @@ typedef struct Sqlist
 	int length;
 }Sqlist;
 
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 void InitSqlist(Sqlist *psq)
 {
 	assert(psq != nullptr);
@@ -24,7 +24,7 @@ void InitSqlist(Sqlist *psq)
 	psq->length = 0;
 }
 
-//ÅĞÂú  ²»À©Èİ
+//åˆ¤æ»¡  ä¸æ‰©å®¹
 bool Full(Sqlist *psq)
 {
 	if (psq->length == SIZE)
@@ -34,7 +34,7 @@ bool Full(Sqlist *psq)
 	return false;
 }
 
-//²åÈë£¬²¢ÏòºóÒÆ¶¯ÔªËØ
+//æ’å…¥ï¼Œå¹¶å‘åç§»åŠ¨å…ƒç´ 
 bool Insert(Sqlist* psq, int pos, int val)
 {
 	if (pos<0 || pos>psq->length)
@@ -54,7 +54,7 @@ bool Insert(Sqlist* psq, int pos, int val)
 	return true;
 }
 
-//²éÕÒkeyÖµ,²¢·µ»ØÏÂ±ê
+//æŸ¥æ‰¾keyå€¼,å¹¶è¿”å›ä¸‹æ ‡
 int Search(Sqlist* psq, int key)
 {
 
@@ -66,7 +66,7 @@ int Search(Sqlist* psq, int key)
 	return -1;
 }
 
-//É¾³ıposÎ»ÖÃµÄÖµ,ÓÃ*rtv·µ»ØÆäÖµ
+//åˆ é™¤posä½ç½®çš„å€¼,ç”¨*rtvè¿”å›å…¶å€¼
 bool DeletePos(Sqlist* psq, int pos, int* rtv)
 {
 	if (pos<0 || pos>psq->length - 1)
@@ -77,7 +77,7 @@ bool DeletePos(Sqlist* psq, int pos, int* rtv)
 	{
 		*rtv = psq->elem[pos];
 	}
-	//É¾³ı£¬Ö®ºóÏòÇ°ÒÆ¶¯ÔªËØ
+	//åˆ é™¤ï¼Œä¹‹åå‘å‰ç§»åŠ¨å…ƒç´ 
 	for (int i = pos;i < psq->length - 1; ++i)
 	{
 		psq->elem[i] = psq->elem[i + 1];
@@ -86,7 +86,7 @@ bool DeletePos(Sqlist* psq, int pos, int* rtv)
 	return true;
 }
 
-//É¾³ıÒ»¸ökeyÖµ
+//åˆ é™¤ä¸€ä¸ªkeyå€¼
 bool Delete(Sqlist* psq, int key)
 {
 	int index = Search(psq, key);
@@ -97,7 +97,7 @@ bool Delete(Sqlist* psq, int key)
 	return DeletePos(psq, index, nullptr);
 }
 
-//µÃµ½posÎ»ÖÃµÄÖµ,ÓÃ* rtv·µ»Ø
+//å¾—åˆ°posä½ç½®çš„å€¼,ç”¨* rtvè¿”å›
 bool Getelem(Sqlist* psq, int pos, int* rtv)
 {
 	if (pos <0 || pos>psq->length - 1)
@@ -110,25 +110,25 @@ bool Getelem(Sqlist* psq, int pos, int* rtv)
 	}
 	return true;
 }
-//»ñµÃ±íÓĞĞ§³¤
+//è·å¾—è¡¨æœ‰æ•ˆé•¿
 int Getlength(Sqlist* psq)
 {
 	return psq->length;
 }
 
-//Çå¿Õ±í
+//æ¸…ç©ºè¡¨
 void Clear(Sqlist* psq)
 {
 	psq->length = 0;
 }
 
-//´İ»Ù±í
+//æ‘§æ¯è¡¨
 void Destroy(Sqlist* psq)
 {
-	Clear(psq);//Î´¶¯Ì¬¿ª±Ù
+	Clear(psq);//æœªåŠ¨æ€å¼€è¾Ÿ
 }
 
-//´òÓ¡
+//æ‰“å°
 void Show(Sqlist* psq)
 {
 	for (int i = 0; i < psq->length; ++i)
@@ -175,7 +175,7 @@ int main()
 
 #endif
 
-//¶¯Ì¬¿ª±ÙË³Ğò±í
+//åŠ¨æ€å¼€è¾Ÿé¡ºåºè¡¨
 #if 0
 typedef struct DSqlist
 {
@@ -184,14 +184,14 @@ typedef struct DSqlist
 	int size;
 }DSqlist;
 
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 void InitDSqlist(DSqlist* psq)
 {
 	assert(psq != nullptr);
-	psq->elem = (int*)malloc(sizeof(int));//³õÊ¼»¯Ò»¸ö¿ÕµÄÏßĞÔ±í
+	psq->elem = (int*)malloc(SIZE*sizeof(int));//åˆå§‹åŒ–ä¸€ä¸ªç©ºçš„çº¿æ€§è¡¨
 	assert(psq->elem != NULL);
 	psq->usedsize = 0;
-	psq->size = SIZE;//·ÖÅä¸ø¿Õ±íµÄ´æ´¢ÈİÁ¿
+	psq->size = SIZE;//åˆ†é…ç»™ç©ºè¡¨çš„å­˜å‚¨å®¹é‡
 }
 
 bool Full(DSqlist* psq)
@@ -199,16 +199,16 @@ bool Full(DSqlist* psq)
 	return psq->usedsize == psq->size;
 }
 
-//¶ş±¶À©Èİ
+//äºŒå€æ‰©å®¹
 void Inc(DSqlist* psq)
 {
-	//remalloc()ÔÚ´Ë´¦»áÒıÆğÄÚ´æĞ¹Â©£¬Òò´ËÀ©Èİ²»»á³É¹¦
+	//å¯èƒ½ä¼šå‘ç”Ÿå†…å­˜æ³„æ¼
 	psq->elem = (int*)realloc(psq->elem, psq->size * 2 * sizeof(int));
 	assert(psq->elem != nullptr);
 	psq->size *= 2;
 }
 
-//ÔÚposÎ»ÖÃ²åÈëvalµÄÖµ
+//åœ¨posä½ç½®æ’å…¥valçš„å€¼
 bool Insert(DSqlist* psq, int pos, int val)
 {
 	if (Full(psq))
@@ -228,7 +228,7 @@ bool Insert(DSqlist* psq, int pos, int val)
 	return true;
 }
 
-//²éÕÒkeyÖµ
+//æŸ¥æ‰¾keyå€¼
 int Search(DSqlist* psq, int key)
 {
 	for (int pos = 0; pos < psq->usedsize - 1; ++pos)
@@ -240,7 +240,7 @@ int Search(DSqlist* psq, int key)
 	}
 }
 
-//É¾³ıposÎ»ÖÃµÄÖµ
+//åˆ é™¤posä½ç½®çš„å€¼
 bool DeletePos(DSqlist* psq, int pos, int* rtv)
 {
 	if (pos<0 || pos>psq->usedsize - 1)
@@ -259,7 +259,7 @@ bool DeletePos(DSqlist* psq, int pos, int* rtv)
 	return true;
 }
 
-//É¾³ıÒ»¸ökeyÖµ
+//åˆ é™¤ä¸€ä¸ªkeyå€¼
 bool Delete(DSqlist* psq, int pos, int key)
 {
 	pos = Search(psq, key);
@@ -270,7 +270,7 @@ bool Delete(DSqlist* psq, int pos, int key)
 	return DeletePos(psq, pos, nullptr);
 }
 
-//µÃµ½posÎ»ÖÃµÄÖµ
+//å¾—åˆ°posä½ç½®çš„å€¼
 bool Getelem(DSqlist* psq, int pos, int* rtv)
 {
 	if (pos<0 || pos>psq->usedsize-1)
@@ -292,7 +292,7 @@ int GetLength(DSqlist* psq)
 /*
 void Clear(DSqlist* psq);
 */
-//ÄÚ´æĞ¹Â© ĞèÒªÊÖ¶¯ÊÍ·Å
+//å†…å­˜æ³„æ¼ éœ€è¦æ‰‹åŠ¨é‡Šæ”¾
 void Destroy(DSqlist* psq)
 {
 	free(psq->elem);
@@ -338,7 +338,7 @@ int main()
 }
 #endif // 1
 
-//Á´±í²Ù×÷
+//é“¾è¡¨æ“ä½œ
 #if 0
 typedef struct Node
 {
@@ -346,14 +346,14 @@ typedef struct Node
 	Node* next;
 }Node;
 
-//³õÊ¼»¯µ¥Á´±í
+//åˆå§‹åŒ–å•é“¾è¡¨
 void InitList(Node* pl)
 {
 	assert(pl != nullptr);
 	pl->next = nullptr;
 }
 
-//Ê×ÏÈĞèÒªµÃµ½Ò»¸ö½Úµã£¬ÔÙ½øĞĞ²åÈë
+//é¦–å…ˆéœ€è¦å¾—åˆ°ä¸€ä¸ªèŠ‚ç‚¹ï¼Œå†è¿›è¡Œæ’å…¥
 Node* GetNode(int val)
 {
 	Node* q = (Node*)malloc(sizeof(Node));
@@ -363,7 +363,7 @@ Node* GetNode(int val)
 	return q;
 }
 
-//Í·²å·¨
+//å¤´æ’æ³•
 void Insert_head(Node* pl, int val)
 {
 	assert(pl != nullptr);
@@ -372,10 +372,10 @@ void Insert_head(Node* pl, int val)
 	pl->next = q;
 }
 
-//Î²²å·¨
+//å°¾æ’æ³•
 bool Insert_tail(Node* pl, int val)
 {
-	Node* cur = pl;//Ö¸ÏòÍ·½Úµã
+	Node* cur = pl;//æŒ‡å‘å¤´èŠ‚ç‚¹
 	while (cur->next != nullptr)
 	{
 		cur = cur->next;
@@ -385,7 +385,7 @@ bool Insert_tail(Node* pl, int val)
 	return true;
 }
 
-//²éÕÒkeyµÄÇ°Çı
+//æŸ¥æ‰¾keyçš„å‰é©±
 Node* Search_pre(Node* pl, int key)
 {
 	Node* cur = pl;
@@ -400,7 +400,7 @@ Node* Search_pre(Node* pl, int key)
 	return NULL;
 }
 
-//É¾³ıkeyÕâ¸ö½áµã
+//åˆ é™¤keyè¿™ä¸ªç»“ç‚¹
 bool Delete(Node* pl, int key)
 {
 	Node* cur = Search_pre(pl, key);
@@ -415,7 +415,7 @@ bool Delete(Node* pl, int key)
 	return true;
 }
 
-//ÊÇ·ñÎª¿Õ
+//æ˜¯å¦ä¸ºç©º
 bool Empty(Node* pl)
 {
 	if (pl == nullptr || pl->next == nullptr)
@@ -425,7 +425,7 @@ bool Empty(Node* pl)
 	return false;
 }
 
-//´İ»Ùº¯Êı£¨Èç¹ûÓĞ¶¯Ì¬¿ª±ÙÄÚ´æµÄ»°£©
+//æ‘§æ¯å‡½æ•°ï¼ˆå¦‚æœæœ‰åŠ¨æ€å¼€è¾Ÿå†…å­˜çš„è¯ï¼‰
 void Destroy(Node* pl)
 {
 	Node* pDel = nullptr;
@@ -439,7 +439,7 @@ void Destroy(Node* pl)
 }
 
 
-//µÃµ½µ¥Á´±íµÄ³¤¶È
+//å¾—åˆ°å•é“¾è¡¨çš„é•¿åº¦
 int GetLength(Node* pl)
 {
 	int count = 0;
@@ -452,7 +452,7 @@ int GetLength(Node* pl)
 	return count;
 }
 
-//´òÓ¡µ¥Á´±í
+//æ‰“å°å•é“¾è¡¨
 void Show(Node* pl)
 {
 	Node* p = pl->next;
@@ -489,7 +489,7 @@ int main()
 }
 #endif
 
-//Ñ­»·µ¥Á´±í
+//å¾ªç¯å•é“¾è¡¨
 #if 0
 typedef struct CLNode
 {
@@ -522,7 +522,7 @@ bool Insert_head(CLNode* plist, int val)
 }
 bool Insert_tail(CLNode* plist, int val)
 {
-	CLNode* cur = plist;//Ö¸ÏòÍ·½Úµã
+	CLNode* cur = plist;//æŒ‡å‘å¤´èŠ‚ç‚¹
 	while (cur->next != nullptr)
 	{
 		cur = cur->next;
@@ -601,7 +601,7 @@ void Show(CLNode* plist)
 
 #endif // 1
 
-//Ñ­»·Ë«Á´±í
+//å¾ªç¯åŒé“¾è¡¨
 #if 0
 typedef struct DNode
 {
@@ -610,7 +610,7 @@ typedef struct DNode
 	DNode* next;
 }DNode, * DList;
 
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 void InitDList(DList plist)
 {
 	assert(plist != nullptr);
@@ -626,7 +626,7 @@ DNode* GetNode(int val)
 	pGet->next = pGet;
 	return pGet;
 }
-//Í·²å·¨
+//å¤´æ’æ³•
 bool Insert_head(DList plist, int val)
 {
 	DNode* pGet = GetNode(val);
@@ -640,7 +640,7 @@ bool Insert_head(DList plist, int val)
 	return true;
 }
 
-//Î²²å·¨
+//å°¾æ’æ³•
 bool Insert_tail(DList plist, int val)
 {
 	DNode* p = plist;
@@ -654,7 +654,7 @@ bool Insert_tail(DList plist, int val)
 	return true;
 }
 
-//²éÕÒkeyµÄÇ°Çı
+//æŸ¥æ‰¾keyçš„å‰é©±
 DNode* Search_pre(DList plist, int key)
 {
 	DNode* p = plist;
@@ -668,7 +668,7 @@ DNode* Search_pre(DList plist, int key)
 	return NULL;
 }
 
-//É¾³ıkeyÕâ¸ö½áµã
+//åˆ é™¤keyè¿™ä¸ªç»“ç‚¹
 bool Delete(DList plist, int key)
 {
 	DNode* p = Search_pre(plist, key);
@@ -676,7 +676,7 @@ bool Delete(DList plist, int key)
 	{
 		return false;
 	}
-	DNode* pDel = p->next;//É¾³ıµÄ½Úµã
+	DNode* pDel = p->next;//åˆ é™¤çš„èŠ‚ç‚¹
 	p->next = pDel->next;
 	if (pDel->next != nullptr)
 	{
